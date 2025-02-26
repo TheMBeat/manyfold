@@ -98,6 +98,7 @@ Rails.application.routes.draw do
       patch "/update", action: "bulk_update"
     end
     resources :model_files, except: [:index, :new] do
+      get 'open_in_slicer', on: :member
       collection do
         get "bulk_edit"
         patch "bulk_update"

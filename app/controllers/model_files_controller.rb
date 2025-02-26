@@ -134,4 +134,21 @@ class ModelFilesController < ApplicationController
     authorize @file
     @title = @file.name
   end
+
+  def open_in_slicer
+    model = Model.find(params[:id])
+    temp_url = generate_temp_url(model)
+    save_temp_url_in_redis(temp_url)
+    redirect_to temp_url
+  end
+  
+  private
+  
+  def generate_temp_url(model)
+    # Logic to generate a temporary URL
+  end
+  
+  def save_temp_url_in_redis(url)
+    $redis.setex(url, 3600, true) # Save URL in Redis with 1-hour expiry
+  end
 end

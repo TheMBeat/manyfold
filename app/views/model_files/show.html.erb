@@ -72,6 +72,7 @@
 
     <%= card :secondary, t("layouts.card_list_page.actions_heading") do %>
       <%= link_to safe_join([icon("cloud-download", t("general.download")), t("general.download")], " "), model_model_file_path(@model, @file, @file.extension&.to_sym, download: "true"), {class: "btn btn-secondary", download: "download"} %>
+      <%= link_to 'Open in Slicer', open_in_slicer_model_path(@model), class: "btn btn-primary" %>
     <% end %>
 
   </div>
